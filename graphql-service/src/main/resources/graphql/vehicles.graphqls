@@ -1,0 +1,49 @@
+type VehicleDescription{
+    id:  ID!,
+    nameAr: String,
+    nameEn: String,
+}
+
+type WasteType{
+    id:  ID!,
+    nameAr: String,
+    nameEn: String,
+}
+
+type MovementStatus{
+    id:  ID!,
+    nameAr: String,
+    nameEn: String,
+}
+
+type Vehicle{
+    id:  ID!,
+    lastLatitude: Float,
+    lastLongitude:Float,
+    lastSpeed :Float,
+    lastPositionTime: LocalDateTime,
+    lastTimeUpdate:LocalDateTime,
+    lastCourse:Float,
+    plateNumber:String,
+    yearOfMade:String,
+    vehicleBrand:String,
+    imei:String,
+    vehicleModel:String,
+    accountId:Long,
+    isDeleted:Boolean,
+    isActive:Boolean,
+    areaId:Long,
+    vehiclesAVLProviderId:Int,
+    projectTypeId:Int,
+    cleaningProjectId:Int,
+    updatedDate:LocalDateTime,
+    licenseNumber:String,
+    licenseDate:LocalDateTime,
+    vehicleProjectId:Int,
+    departmentId:Int,
+    vehicleDescription:VehicleDescription,
+    alarms:[Alarm],
+    wasteType:WasteType,
+    movementStatus: MovementStatus,
+    manifests: [Manifest]
+}

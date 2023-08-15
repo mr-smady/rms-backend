@@ -1,0 +1,23 @@
+type ZoneType{
+    id:  ID!,
+    nameAr: String,
+    nameEn: String,
+    deleted:Boolean,
+}
+
+type AlarmType{
+    id:  ID!,
+    nameAr: String,
+    nameEn: String,
+}
+
+type Alarm{
+    id:  ID!,
+    alarmType: AlarmType,
+    number: Int,
+    zoneType: ZoneType,
+    vehicle: Vehicle,
+    company: Company,
+    time: LocalDateTime,
+    statusId: Int,
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#GRADLE_JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/alarms-service" />
+            <option value="$PROJECT_DIR$/companies-service" />
+            <option value="$PROJECT_DIR$/graphql-service" />
+            <option value="$PROJECT_DIR$/manifest-service" />
+            <option value="$PROJECT_DIR$/trips-service" />
+            <option value="$PROJECT_DIR$/vehicles-service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

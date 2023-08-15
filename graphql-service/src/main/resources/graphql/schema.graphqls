@@ -1,0 +1,11 @@
+type Query{
+    vehicles(page:Int, size:Int):[Vehicle],
+    vehicle(id:Int!):Vehicle,
+    vehiclesCount:Long,
+    alarms:[Alarm],
+    companies:[Company],
+    trips(vehicleId:Int!, page:Int, size:Int):[Trip],
+    tripsCount:Long,
+    manifests(page:Int, size:Int): [Manifest]
+    manifestsCount:Long,
+}

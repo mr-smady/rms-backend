@@ -1,0 +1,9 @@
+type Trip{
+    id:  ID!,
+    startDate: LocalDateTime,
+    endDate:LocalDateTime,
+    vehicleId: Int,
+    avgSpeed: Int,
+    maxSpeed: Int,
+    minSpeed: Int,
+}

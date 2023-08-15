@@ -1,0 +1,21 @@
+type Manifest{
+    id:  ID!,
+    number: Int,
+    wasteProducer: WasteProducer,
+    wasteType: WasteType,
+    status: ManifestStatus,
+    assignmentDate: LocalDateTime,
+    vehicle: Vehicle,
+}
+
+type ManifestStatus{
+    id: ID!,
+    nameAr: String,
+    nameEn: String,
+}
+
+type WasteProducer{
+    id: ID!,
+    nameAr: String,
+    nameEn: String,
+}
