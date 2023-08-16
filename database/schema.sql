@@ -270,7 +270,16 @@ ALTER TABLE manifest
 ALTER TABLE manifest
     ADD FOREIGN KEY (vehicle_id) REFERENCES vehicle (id);
 
-
+CREATE TABLE location
+(
+    id INT PRIMARY KEY IDENTITY (1, 1),
+    vehicle_id INT,
+    latitude FLOAT,
+    longitude FLOAT,
+    speed FLOAT,
+    ignition BIT,
+    receivedServerTime DATETIME
+);
 
 -- BEGIN
 -- 	DECLARE @i INT = 0;

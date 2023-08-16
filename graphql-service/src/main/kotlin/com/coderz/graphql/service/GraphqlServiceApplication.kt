@@ -21,6 +21,7 @@ class GraphqlServiceProperties {
     lateinit var companiesServiceEndpoint: String
     lateinit var tripsServiceEndpoint: String
     lateinit var manifestServiceEndpoint: String
+    lateinit var locationsServiceEndpoint: String
     lateinit var redisHost: String
     var redisPort by Delegates.notNull<Int>()
 }

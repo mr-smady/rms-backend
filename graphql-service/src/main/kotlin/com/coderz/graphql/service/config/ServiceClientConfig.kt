@@ -51,6 +51,12 @@ class ServiceClientConfig(
         .defaultHeaders(defaultHeaders)
         .build()
 
+    @Bean("locationsServiceClient")
+    fun locationsServiceClient(builder: WebClient.Builder): WebClient = builder
+        .baseUrl(properties.locationsServiceEndpoint)
+        .defaultHeaders(defaultHeaders)
+        .build()
+
 
     @Bean("vehiclesServiceClient")
     fun vehiclesServiceClient(builder: WebClient.Builder): WebClient {

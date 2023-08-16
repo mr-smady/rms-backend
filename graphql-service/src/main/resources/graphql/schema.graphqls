@@ -8,4 +8,5 @@ type Query{
     tripsCount:Long,
     manifests(page:Int, size:Int): [Manifest]
     manifestsCount:Long,
+    locations(vehicleId:Int!, page:Int, size:Int):[Location],
 }

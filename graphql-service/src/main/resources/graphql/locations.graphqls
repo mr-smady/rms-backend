@@ -1,0 +1,9 @@
+type Location{
+    id: ID!,
+    vehicleId: Int,
+    latitude: Float,
+    longitude: Float,
+    speed: Float,
+    ignition: Boolean,
+    receivedServerTime: LocalDateTime,
+}

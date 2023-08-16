@@ -7,6 +7,8 @@ include(
     "companies-service",
     "trips-service",
     "manifest-service",
+    "task-executor",
+    "locations-services",
 )
 
 
