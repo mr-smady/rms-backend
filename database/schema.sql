@@ -281,6 +281,36 @@ CREATE TABLE location
     receivedServerTime DATETIME
 );
 
+
+ALTER TABLE manifest
+    ADD latitude FLOAT;
+ALTER TABLE manifest
+    ADD longitude FLOAT;
+
+CREATE TABLE zone_type
+(
+    id      INT PRIMARY KEY IDENTITY (1, 1),
+    name_ar NVARCHAR(50) NOT NULL,
+    name_en NVARCHAR(50) NOT NULL
+);
+
+CREATE TABLE [zone]
+(
+    id INT PRIMARY KEY IDENTITY (1, 1),
+    name_ar NVARCHAR(50) NOT NULL,
+    name_en NVARCHAR(50) NOT NULL,
+    zone_type_id INT
+    )
+
+
+CREATE TABLE zone_point
+(
+    id         INT PRIMARY KEY IDENTITY (1, 1),
+    latitude   FLOAT,
+    longitude  FLOAT,
+    zone_id	   INT,
+);
+
 -- BEGIN
 -- 	DECLARE @i INT = 0;
 -- 	DECLARE @zone_type_id INT;

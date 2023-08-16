@@ -11,6 +11,8 @@ data class Manifest(
     val statusId: Int?,
     val vehicleId: Int?,
     val assignmentDate: LocalDateTime?,
+    val latitude: Double?,
+    val longitude: Double?,
 )
 
 data class ManifestStatus(

@@ -9,4 +9,6 @@ type Query{
     manifests(page:Int, size:Int): [Manifest]
     manifestsCount:Long,
     locations(vehicleId:Int!, page:Int, size:Int):[Location],
+    zones(zoneTypeId:Int!):[Zone]
+    zone(id:Int!):Zone
 }

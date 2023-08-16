@@ -6,6 +6,8 @@ type Manifest{
     status: ManifestStatus,
     assignmentDate: LocalDateTime,
     vehicle: Vehicle,
+    latitude: Float,
+    longitude: Float,
 }
 
 type ManifestStatus{

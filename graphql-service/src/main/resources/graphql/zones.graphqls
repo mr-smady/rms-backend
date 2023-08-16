@@ -1,0 +1,14 @@
+type Zone{
+    id:  ID!,
+    nameAr: String,
+    nameEn: String,
+    zoneType:ZoneType,
+    points: [ZonePoint]
+}
+
+type ZonePoint{
+    id:  ID!
+    latitude: Float,
+    longitude: Float,
+    zone: Zone,
+}

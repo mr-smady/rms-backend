@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller
 class LocationsResolver(
     private val locationsService: LocationsService,
 ) {
+    @QueryMapping
     suspend fun locations(@Argument vehicleId: Int, @Argument page: Int?, @Argument size: Int?) =
         locationsService.locations(vehicleId,page ?: 0, size ?: 100)
 }
