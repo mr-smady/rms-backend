@@ -5,7 +5,6 @@ cd ~/rms-backend || goto exit_error
 chmod +x gradlew
  ./gradlew clean build
 
-
 cd ~/rms-backend/alarms-service || goto exit_error
 chmod +x ./*.sh
 ./build-image.sh
