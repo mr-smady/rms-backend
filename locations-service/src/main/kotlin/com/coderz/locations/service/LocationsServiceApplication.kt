@@ -9,6 +9,8 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.http.codec.ServerCodecConfigurer
 import org.springframework.stereotype.Repository
 import org.springframework.web.reactive.config.WebFluxConfigurer
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @SpringBootApplication
 class LocationsServiceApplication
@@ -17,9 +19,22 @@ fun main(args: Array<String>) {
     runApplication<LocationsServiceApplication>(*args)
 }
 
+class Const {
+    companion object {
+        val DATE_TIME_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+    }
+}
+
 @Repository
 interface LocationsRepository : CoroutineCrudRepository<Location, Int> {
-    fun findAllByVehicleId(vehicleId: Int, pageable: Pageable): Flow<Location>
+    fun findAllByVehicleIdAndReceivedServerTimeBetween(
+        vehicleId: Int,
+        from: LocalDateTime,
+        toLocalDateTime: LocalDateTime,
+        pageable: Pageable,
+    ): Flow<Location>
+
+    fun findByVehicleId(vehicleId: Int, pageable: Pageable): Flow<Location>
 }
 
 @Configuration

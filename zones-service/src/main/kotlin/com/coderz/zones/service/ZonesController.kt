@@ -19,4 +19,6 @@ class ZonesController(
     suspend fun zone(@PathVariable zoneId: Int) = service.zone(zoneId)
 
     @GetMapping("/points/{zoneId}")
-    suspend fun points(@PathVariable zoneId: Int) = service.points(zoneId)}
+    suspend fun points(@PathVariable zoneId: Int) = service.points(zoneId)
+
+}

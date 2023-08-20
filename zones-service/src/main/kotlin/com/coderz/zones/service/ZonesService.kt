@@ -18,5 +18,5 @@ class ZonesService(
         zonesRepository.findById(zoneId)
 
     suspend fun points(zoneId: Int) =
-        zonePointsRepository.findAllByZoneId(zoneId)
+        zonePointsRepository.findByZoneId(zoneId)
 }

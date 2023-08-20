@@ -339,3 +339,22 @@ CREATE TABLE zone_point
 
 
 -- DBCC CHECKIDENT ('school', RESEED, 0);
+
+
+
+-- BEGIN
+-- 	DECLARE @i INT = 0
+-- 	DECLARE @min_latitude FLOAT = (SELECT MIN(l.latitude) FROM location l);
+-- 	DECLARE @max_latitude FLOAT = (SELECT MAX(l.latitude) FROM location l);
+-- 	DECLARE @min_longitude FLOAT = (SELECT MIN(l.longitude) FROM location l);
+-- 	DECLARE @max_longitude FLOAT = (SELECT MAX(l.longitude) FROM location l);
+-- 	DECLARE @latitude FLOAT;
+-- 	DECLARE @longitude FLOAT;
+-- 	WHILE @i <= 100000
+-- BEGIN
+-- 			SET @latitude = (SELECT RAND()*(@max_latitude-@min_latitude)+@min_latitude);
+-- 			SET @latitude = (SELECT RAND()*(@max_longitude-@min_longitude)+@min_longitude);
+-- UPDATE manifest SET latitude = @latitude, longitude = @longitude;
+-- SET @i = @i + 1;
+-- END
+-- END

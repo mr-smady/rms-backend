@@ -9,7 +9,7 @@ data class Zone(
 
 data class ZonePoint(
     val id: Int?,
-    val vehicleId: Int?,
     val latitude: Double?,
+    val longitude: Double?,
     val zoneId: Int?,
 )

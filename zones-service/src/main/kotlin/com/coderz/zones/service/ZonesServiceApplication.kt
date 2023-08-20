@@ -23,7 +23,7 @@ interface ZonesRepository : CoroutineCrudRepository<Zone, Int> {
 
 @Repository
 interface ZonePointsRepository : CoroutineCrudRepository<ZonePoint, Int> {
-    fun findAllByZoneId(zoneId: Int): Flow<ZonePoint>
+    fun findByZoneId(zoneId: Int): Flow<ZonePoint>
 }
 
 @Configuration

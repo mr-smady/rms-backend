@@ -8,7 +8,8 @@ type Query{
     tripsCount:Long,
     manifests(page:Int, size:Int): [Manifest]
     manifestsCount:Long,
-    locations(vehicleId:Int!, page:Int, size:Int):[Location],
+    locations(vehicleId:Int!, from:LocalDateTime!, to:LocalDateTime!, page:Int, size:Int):[Location],
     zones(zoneTypeId:Int!):[Zone]
     zone(id:Int!):Zone
+    locationRowData(vehicleId:Int!):[Location]
 }
