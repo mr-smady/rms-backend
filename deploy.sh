@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git clone git@github.com:mr-smady/rms-backend.git
+git pull
 cd ~/rms-backend || goto exit_error
 chmod +x gradlew
  ./gradlew clean build
