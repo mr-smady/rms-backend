@@ -30,6 +30,10 @@ cd ~/rms-backend/vehicles-service || goto exit_error
 chmod +x ./*.sh
 ./build-image.sh
 ./run-service.sh
+cd ~/rms-backend/zones-service || goto exit_error
+chmod +x ./*.sh
+./build-image.sh
+./run-service.sh
 cd ~/rms-backend || goto exit_error
 exit
 exit_error:
