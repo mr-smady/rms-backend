@@ -1,5 +1,6 @@
 #!/bin/bash
 
+git restore .
 git pull
 cd ~/rms-backend || goto exit_error
 chmod +x gradlew
