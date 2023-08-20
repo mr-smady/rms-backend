@@ -1,4 +1,11 @@
 #!/bin/bash
+
+git clone git@github.com:mr-smady/rms-backend.git
+cd rms-backend || goto exit_error
+chmod +x gradlew
+
+
+
 cd ~/services/alarms-service || goto exit_error
 ./build-image.sh
 ./run-service.sh
