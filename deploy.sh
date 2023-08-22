@@ -1,9 +1,5 @@
 #!/bin/bash
 
-eval "$(ssh-agent -s)"
-ssh-add -k ~/keys/rms-backend
-git restore .
-git pull
 cd ~/rms-backend || goto exit_error
 chmod +x gradlew
  ./gradlew clean build
