@@ -45,5 +45,6 @@ type Vehicle{
     alarms:[Alarm],
     wasteType:WasteType,
     movementStatus: MovementStatus,
-    manifests: [Manifest]
+    manifests: [Manifest],
+    alarmsCount: Int,
 }

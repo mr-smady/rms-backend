@@ -311,6 +311,9 @@ CREATE TABLE zone_point
     zone_id	   INT,
 );
 
+ALTER TABLE vehicle
+    ADD alarms_count INT;
+
 -- BEGIN
 -- 	DECLARE @i INT = 0;
 -- 	DECLARE @zone_type_id INT;

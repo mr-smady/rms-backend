@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
+import org.springframework.web.reactive.function.client.awaitBodyOrNull
 
 @Component
 class VehiclesClient(
@@ -19,21 +20,22 @@ class VehiclesClient(
         client.get()
             .uri("/${id}")
             .retrieve()
-            .awaitBody()
+            .awaitBodyOrNull()
+
 
     suspend fun vehicleDescription(id: Int): VehicleDescription? =
         client.get()
             .uri("/vehicle-description/${id}")
             .retrieve()
-            .awaitBody()
+            .awaitBodyOrNull()
 
     suspend fun wasteType(wasteTypeId: Int): WasteType? =
         client.get()
             .uri("/waste-type/${wasteTypeId}")
             .retrieve()
-            .awaitBody()
+            .awaitBodyOrNull()
 
-    suspend fun vehiclesCount(): Long? =
+    suspend fun vehiclesCount(): Long =
         client.get()
             .uri("/count")
             .retrieve()
@@ -43,5 +45,5 @@ class VehiclesClient(
         client.get()
             .uri("/movement-status/${movementStatusId}")
             .retrieve()
-            .awaitBody()
+            .awaitBodyOrNull()
 }

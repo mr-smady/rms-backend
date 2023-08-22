@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
+import org.springframework.web.reactive.function.client.awaitBodyOrNull
 
 @Component
 class ManifestClient(
@@ -19,15 +20,15 @@ class ManifestClient(
         client.get()
             .uri("/waste-producer/$wasteProducerId")
             .retrieve()
-            .awaitBody()
+            .awaitBodyOrNull()
 
-    suspend fun manifestStatus(statusId: Int): ManifestStatus? =
+    suspend fun manifestStatus(statusId: Int): ManifestStatus =
         client.get()
             .uri("/manifest-status/$statusId")
             .retrieve()
             .awaitBody()
 
-    suspend fun manifestsCount(): Long? =
+    suspend fun manifestsCount(): Long =
         client.get()
             .uri("/count")
             .retrieve()
@@ -37,5 +38,5 @@ class ManifestClient(
         client.get()
             .uri("/vehicle-manifests/$vehicleId")
             .retrieve()
-            .awaitBody()
+            .awaitBodyOrNull()
 }

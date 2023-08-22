@@ -31,6 +31,7 @@ data class Vehicle(
     val departmentId: Int?,
     val wasteTypeId: Int?,
     val movementStatusId: Int?,
+    val alarmsCount :Int?,
 )
 
 data class VehicleDescription(

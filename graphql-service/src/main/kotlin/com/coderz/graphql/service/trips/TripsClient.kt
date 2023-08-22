@@ -15,7 +15,7 @@ class TripsClient(
             .retrieve()
             .awaitBody()
 
-    suspend fun tripsCount(): Long? =
+    suspend fun tripsCount(): Long =
         client.get()
             .uri("/count")
             .retrieve()

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
+import org.springframework.web.reactive.function.client.awaitBodyOrNull
 
 @Component
 class AlarmsClient(
@@ -24,9 +25,9 @@ class AlarmsClient(
        client.get()
            .uri("/zone-type/${zoneTypeId}")
            .retrieve()
-           .awaitBody()
+           .awaitBodyOrNull()
 
-    suspend fun alarmType(typeId: Int): AlarmType? =
+    suspend fun alarmType(typeId: Int): AlarmType =
         client.get()
             .uri("/alarm-type/${typeId}")
             .retrieve()

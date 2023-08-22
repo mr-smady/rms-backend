@@ -22,6 +22,10 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
 
+ssh-keygen -C "openshift-source-builder/repo@github" -f ui-at-github -N ''
+eval "$(ssh-agent -s)"
+ssh-add -k keys/repo-at-github
+
 docker ps --filter status=exited -q | xargs docker rm
 
 

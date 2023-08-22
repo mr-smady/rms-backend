@@ -1,8 +1,6 @@
 package com.coderz.graphql.service.alarms
 
 import com.coderz.graphql.service.config.getRedisKey
-import com.coderz.graphql.service.vehicles.VehicleMovementStatus
-import com.coderz.graphql.service.vehicles.WasteType
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.data.redis.core.ReactiveRedisTemplate
 import org.springframework.stereotype.Service
