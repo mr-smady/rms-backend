@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class VehiclesController(
     private val vehiclesService: VehiclesService,
     private val vehicleDescriptionService: VehicleDescriptionService,
+
 ) {
 
     @GetMapping
@@ -39,6 +40,20 @@ class VehiclesController(
     @GetMapping("/movement-status/{movementStatusId}")
     suspend fun movementStatus(@PathVariable movementStatusId: Int) =
         vehiclesService.movementStatus(movementStatusId)
+
+    @GetMapping("/avl-last-data")
+    suspend fun avlLastData(
+        @RequestParam(
+            required = false,
+            defaultValue = "0"
+        ) page: Int,
+        @RequestParam(
+            required = false,
+            defaultValue = "100"
+        ) size: Int,
+    ) =
+   vehiclesService.findAllAvlLastData(page, size)
+
 
 
     @GetMapping("/count")

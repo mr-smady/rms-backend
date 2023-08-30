@@ -1,5 +1,6 @@
 type Query{
     vehicles(page:Int, size:Int):[Vehicle],
+    avlLastData(page:Int, size:Int) : [AvlLastData] ,
     vehicle(id:Int!):Vehicle,
     vehiclesCount:Long,
     alarms:[Alarm],

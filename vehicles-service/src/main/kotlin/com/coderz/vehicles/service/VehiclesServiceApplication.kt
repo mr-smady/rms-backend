@@ -31,7 +31,10 @@ interface WasteTypeRepository : CoroutineCrudRepository<WasteType, Int>
 @Repository
 interface MovementStatusRepository : CoroutineCrudRepository<VehicleMovementStatus, Int>
 
-
+@Repository
+interface  AvlLastDataRepository : CoroutineCrudRepository<AvlLastData , Int>{
+    fun findAllBy(pageable: Pageable) : Flow<AvlLastData>
+}
 @Configuration
 class WebFluxConfiguration : WebFluxConfigurer {
     override fun configureHttpMessageCodecs(configurer: ServerCodecConfigurer) {

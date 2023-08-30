@@ -6,7 +6,6 @@ import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.graphql.data.method.annotation.SchemaMapping
 import org.springframework.stereotype.Controller
-import java.util.jar.Manifest
 
 //private val log = KotlinLogging.logger {}
 
@@ -48,6 +47,14 @@ class VehiclesResolver(
     @SchemaMapping(typeName = "Vehicle", field = "manifests")
     suspend fun manifests(vehicle: Vehicle) =
         manifestService.vehicleManifests(vehicle.id)
+
+  /*  @SchemaMapping(typeName = "Vehicle" , field = "avlLastData")
+    suspend fun vehiclesLastUpdate(@Argument page: Int?, @Argument size: Int?){
+        vehicleLastDataService.vehiclesLastUpdate(page ?: 0, size ?: 100)
+    }*/
+    @QueryMapping()
+    suspend fun avlLastData(@Argument page: Int?, @Argument size: Int?) =
+      vehiclesService.avlLastData(page ?: 0, size ?: 100)
 
 
 }

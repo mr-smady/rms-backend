@@ -16,6 +16,14 @@ class VehiclesClient(
             .retrieve()
             .awaitBody()
 
+    suspend fun avlLastData(page: Int, size: Int): List<AvlLastData> =
+        client.get()
+            .uri("/avl-last-data?page=$page&size=$size")
+            .retrieve()
+            .awaitBody()
+
+
+
     suspend fun vehicle(id: Int): Vehicle? =
         client.get()
             .uri("/${id}")

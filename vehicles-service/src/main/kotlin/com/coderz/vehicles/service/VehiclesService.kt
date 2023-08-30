@@ -11,6 +11,7 @@ class VehiclesService(
     private val vehiclesRepository: VehiclesRepository,
     private val wasteTypeRepository: WasteTypeRepository,
     private val movementStatusRepository: MovementStatusRepository,
+    private  val avlLastDataRepository : AvlLastDataRepository
 ) {
     suspend fun vehicles(page: Int, size: Int): Flow<Vehicle> =
         vehiclesRepository.findAllBy(PageRequest.of(page, size))
@@ -26,5 +27,6 @@ class VehiclesService(
 
     suspend fun movementStatus(movementStatusId: Int) =
         movementStatusRepository.findById(movementStatusId)
-
+    suspend fun findAllAvlLastData(page : Int, size : Int) =
+        avlLastDataRepository.findAllBy(PageRequest.of(page, size))
 }

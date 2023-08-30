@@ -17,6 +17,10 @@ class VehiclesService(
     suspend fun vehicles(page: Int, size: Int) =
         vehiclesClient.vehicles(page, size)
 
+    suspend fun avlLastData(page: Int, size: Int) : List<AvlLastData> {
+        return vehiclesClient.avlLastData(page, size)
+    }
+
     suspend fun findById(vehicleId: Int?): Vehicle? {
         if (vehicleId != null) {
             return vehiclesClient.vehicle(vehicleId)
