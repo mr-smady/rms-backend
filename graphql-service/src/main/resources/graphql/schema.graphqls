@@ -13,4 +13,5 @@ type Query{
     zones(zoneTypeId:Int!):[Zone]
     zone(id:Int!):Zone
     locationRowData(vehicleId:Int!):[Location]
-}
+    zonesType:[ZonesType]
+   }

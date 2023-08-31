@@ -15,3 +15,11 @@ data class ZonePoint(
     val longitude: Double?,
     val zoneId: Int?,
 )
+
+data class ZoneType(
+    @Id val id: Int?,
+    val nameAr: String?,
+    val nameEn : String ? ,
+    val deleted : Boolean ,
+    val zonesCount : Int ? = 0
+)

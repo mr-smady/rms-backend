@@ -310,9 +310,102 @@ CREATE TABLE zone_point
     longitude  FLOAT,
     zone_id	   INT,
 );
-
+CREATE TABLE Test (
+	id int IDENTITY(0,1) NOT NULL,
+	Name varchar(100) NULL,
+	CONSTRAINT Test_PK PRIMARY KEY (id)
+);
 ALTER TABLE vehicle
     ADD alarms_count INT;
+
+ALTER TABLE zone_type
+ADD zones_count INT
+
+UPDATE master.dbo.zone_type
+SET zones_count = (
+    SELECT COUNT(*)
+    FROM master.dbo.zone
+    WHERE master.dbo.zone_type.id = master.dbo.zone.zone_type_id
+);
+
+CREATE TRIGGER UpdateZoneTypeZonesCount
+ON master.dbo.[zone]
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+
+    UPDATE ZT
+    SET ZT.zones_count = (SELECT COUNT(*) FROM master.dbo.[zone] WHERE zone_type_id = ZT.id)
+    FROM master.dbo.zone_type AS ZT
+    JOIN inserted AS I ON ZT.id = I.zone_type_id
+    WHERE I.zone_type_id IS NOT NULL;
+
+    UPDATE ZT
+    SET ZT.zones_count = (SELECT COUNT(*) FROM master.dbo.[zone] WHERE zone_type_id = ZT.id)
+    FROM master.dbo.zone_type AS ZT
+    JOIN deleted AS D ON ZT.id = D.zone_type_id
+    WHERE D.zone_type_id IS NOT NULL;
+END;
+GO
+
+
+
+-- CREATE A TRIGGER THAT ADD A NEW ROW IN avl_last_data WHEN INSERT A NEW RECORD IN avl_data
+CREATE TRIGGER UpdateAVLLastData
+ON master.dbo.avl_data
+AFTER INSERT
+AS
+BEGIN
+
+    MERGE INTO master.dbo.avl_last_data AS target
+    USING inserted AS source ON target.id  = source.id
+    WHEN MATCHED THEN
+        UPDATE SET
+            target.movement_time = source.movement_time,
+            target.priority = source.priority,
+            target.longitude = source.longitude,
+            target.latitude = source.latitude,
+            target.altitude = source.altitude,
+            target.angle = source.angle,
+            target.speed = source.speed,
+            target.movement = source.movement,
+            target.digital_input1 = source.digital_input1,
+            target.analog_input1 = source.analog_input1,
+            target.ignition = source.ignition,
+            target.distance = source.distance,
+            target.total_distance = source.total_distance,
+            target.green_driving_type = source.green_driving_type,
+            target.event_id = source.event_id,
+            target.tag = source.tag,
+            target.last_tag = source.last_tag,
+            target.waste_collection_time = source.waste_collection_time,
+            target.waste_latitude = source.waste_latitude,
+            target.waste_longitude = source.waste_longitude,
+            target.gross_weight = source.gross_weight,
+            target.ed0 = source.ed0,
+            target.ed1 = source.ed1,
+            target.input1 = source.input1,
+            target.input2 = source.input2,
+            target.input3 = source.input3,
+            target.input4 = source.input4,
+            target.input5 = source.input5,
+            target.plate_number = source.plate_number
+    WHEN NOT MATCHED THEN
+        INSERT (imei, movement_time, priority, longitude, latitude, altitude, angle, speed,
+                movement, digital_input1, analog_input1, ignition, distance, total_distance,
+                green_driving_type, event_id, tag, last_tag, waste_collection_time,
+                waste_latitude, waste_longitude, gross_weight, ed0, ed1, input1, input2,
+                input3, input4, input5, plate_number)
+        VALUES (source.imei, source.movement_time, source.priority, source.longitude,
+                source.latitude, source.altitude, source.angle, source.speed,
+                source.movement, source.digital_input1, source.analog_input1,
+                source.ignition, source.distance, source.total_distance,
+                source.green_driving_type, source.event_id, source.tag,
+                source.last_tag, source.waste_collection_time, source.waste_latitude,
+                source.waste_longitude, source.gross_weight, source.ed0, source.ed1,
+                source.input1, source.input2, source.input3, source.input4,
+                source.input5, source.plate_number);
+END;
 
 -- BEGIN
 -- 	DECLARE @i INT = 0;

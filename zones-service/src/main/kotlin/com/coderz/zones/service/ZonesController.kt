@@ -21,4 +21,8 @@ class ZonesController(
     @GetMapping("/points/{zoneId}")
     suspend fun points(@PathVariable zoneId: Int) = service.points(zoneId)
 
+    @GetMapping("/zones-type")
+    suspend fun zonesType() = service.zonesType()
+
+
 }

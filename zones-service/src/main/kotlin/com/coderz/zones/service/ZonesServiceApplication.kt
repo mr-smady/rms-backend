@@ -26,6 +26,9 @@ interface ZonePointsRepository : CoroutineCrudRepository<ZonePoint, Int> {
     fun findByZoneId(zoneId: Int): Flow<ZonePoint>
 }
 
+
+@Repository
+interface ZoneTypeRepository : CoroutineCrudRepository<ZoneType , Int>
 @Configuration
 class WebFluxConfiguration : WebFluxConfigurer {
     override fun configureHttpMessageCodecs(configurer: ServerCodecConfigurer) {

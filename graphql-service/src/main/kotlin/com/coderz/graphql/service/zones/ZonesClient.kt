@@ -27,5 +27,11 @@ class ZonesClient(
             .uri("/points/$zoneId")
             .retrieve()
             .awaitBody()
+   suspend fun zonesType(): List<ZonesType> =
+       client.get()
+           .uri("/zones-type")
+           .retrieve()
+           .awaitBody()
+
 
 }

@@ -15,4 +15,8 @@ class ZonesService(
     suspend fun points(zoneId: Int?) = if (zoneId != null)
         zonesClient.points(zoneId)
     else null
+
+   suspend fun zonesType() = zonesClient.zonesType()
+
+
 }

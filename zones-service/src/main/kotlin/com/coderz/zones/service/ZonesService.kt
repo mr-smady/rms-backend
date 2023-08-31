@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service
 @Service
 class ZonesService(
     private val zonesRepository: ZonesRepository,
-    private val zonePointsRepository: ZonePointsRepository
+    private val zonePointsRepository: ZonePointsRepository ,
+    private val zoneTypeRepository: ZoneTypeRepository
 
 ) {
     suspend fun zones(zoneTypeId: Int): Flow<Zone> =
@@ -19,4 +20,8 @@ class ZonesService(
 
     suspend fun points(zoneId: Int) =
         zonePointsRepository.findByZoneId(zoneId)
+
+   suspend fun zonesType(): Flow<ZoneType> = zoneTypeRepository.findAll()
+
+
 }

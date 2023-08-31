@@ -12,3 +12,12 @@ type ZonePoint{
     longitude: Float,
     zone: Zone,
 }
+
+type ZonesType {
+    id : Int  ,
+    nameAr : String ,
+    nameEn : String ,
+    deleted : Boolean ,
+    zones : [Zone],
+    zonesCount:Int,
+}
