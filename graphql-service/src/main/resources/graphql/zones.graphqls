@@ -4,6 +4,8 @@ type Zone{
     nameEn: String,
     zoneType:ZoneType,
     points: [ZonePoint]
+    lastUpdateDate : LocalDateTime ,
+    creationDate : LocalDateTime ,
 }
 
 type ZonePoint{

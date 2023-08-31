@@ -1,10 +1,15 @@
 package com.coderz.graphql.service.zones
 
+import java.time.LocalDateTime
+
 data class Zone(
     val id: Int?,
     val nameAr: String?,
     val nameEn: String?,
     val zoneTypeId: Int?,
+    val lastUpdateDate : LocalDateTime?,
+    val creationDate : LocalDateTime
+
 )
 
 data class ZonePoint(
