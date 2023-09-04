@@ -348,6 +348,7 @@ BEGIN
 END;
 GO
 
+ALTER TABLE master.dbo.avl_last_data ADD update_date datetime NULL;
 
 
 -- CREATE A TRIGGER THAT ADD A NEW ROW IN avl_last_data WHEN INSERT A NEW RECORD IN avl_data
@@ -358,7 +359,7 @@ AS
 BEGIN
 
     MERGE INTO master.dbo.avl_last_data AS target
-    USING inserted AS source ON target.id  = source.id
+    USING inserted AS source ON target.plate_number  = source.plate_number
     WHEN MATCHED THEN
         UPDATE SET
             target.movement_time = source.movement_time,
@@ -389,13 +390,14 @@ BEGIN
             target.input3 = source.input3,
             target.input4 = source.input4,
             target.input5 = source.input5,
-            target.plate_number = source.plate_number
+            target.plate_number = source.plate_number,
+            target.update_date = GETUTCDATE()
     WHEN NOT MATCHED THEN
         INSERT (imei, movement_time, priority, longitude, latitude, altitude, angle, speed,
                 movement, digital_input1, analog_input1, ignition, distance, total_distance,
                 green_driving_type, event_id, tag, last_tag, waste_collection_time,
                 waste_latitude, waste_longitude, gross_weight, ed0, ed1, input1, input2,
-                input3, input4, input5, plate_number)
+                input3, input4, input5, plate_number , update_date)
         VALUES (source.imei, source.movement_time, source.priority, source.longitude,
                 source.latitude, source.altitude, source.angle, source.speed,
                 source.movement, source.digital_input1, source.analog_input1,
@@ -404,7 +406,7 @@ BEGIN
                 source.last_tag, source.waste_collection_time, source.waste_latitude,
                 source.waste_longitude, source.gross_weight, source.ed0, source.ed1,
                 source.input1, source.input2, source.input3, source.input4,
-                source.input5, source.plate_number);
+                source.input5, source.plate_number , GETUTCDATE());
 END;
 
 -- BEGIN
