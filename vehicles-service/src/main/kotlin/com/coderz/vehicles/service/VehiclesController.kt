@@ -54,7 +54,9 @@ class VehiclesController(
     ) =
    vehiclesService.findAllAvlLastData(page, size)
 
-
+    @GetMapping("/vehicle-avl-last-data/{plateNumber}")
+    suspend fun vehicleAvlLastData(@PathVariable plateNumber : String ) =
+        vehiclesService.vehicleAvlLastData(plateNumber)
 
     @GetMapping("/count")
     suspend fun vehiclesCount() =

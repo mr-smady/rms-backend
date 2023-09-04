@@ -22,11 +22,16 @@ class VehiclesClient(
             .retrieve()
             .awaitBody()
 
+    suspend fun vehicleAvlLastData(plateNumber : String) : AvlLastData =
+        client.get()
+            .uri("/vehicle-avl-last-data/$plateNumber")
+            .retrieve()
+            .awaitBody()
 
 
     suspend fun vehicle(id: Int): Vehicle? =
         client.get()
-            .uri("/${id}")
+            .uri("/$id")
             .retrieve()
             .awaitBodyOrNull()
 

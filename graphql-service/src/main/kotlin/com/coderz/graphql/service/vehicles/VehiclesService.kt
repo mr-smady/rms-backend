@@ -64,4 +64,6 @@ class VehiclesService(
         return null
     }
 
+  suspend fun vehicleAvlLastData(plateNumber: String) =
+      vehiclesClient.vehicleAvlLastData(plateNumber)
 }

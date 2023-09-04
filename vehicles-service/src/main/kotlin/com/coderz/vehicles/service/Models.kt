@@ -82,5 +82,6 @@ data class AvlLastData(
     val input3: Float?,
     val input4: Float?,
     val input5: Float?,
-    val plateNumber: String?
+    val plateNumber: String?,
+    val updateDate: LocalDateTime?
 )

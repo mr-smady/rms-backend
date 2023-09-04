@@ -1,6 +1,7 @@
 type Query{
     vehicles(page:Int, size:Int):[Vehicle],
     avlLastData(page:Int, size:Int) : [AvlLastData] ,
+    vehicleAvlLastData(plateNumber : String) : AvlLastData  ,
     vehicle(id:Int!):Vehicle,
     vehiclesCount:Long,
     alarms:[Alarm],
@@ -14,4 +15,38 @@ type Query{
     zone(id:Int!):Zone
     locationRowData(vehicleId:Int!):[Location]
     zonesType:[ZonesType]
-   }
+    greeting : Greeting
+}
+
+
+# these mutations and - is for TEST Only
+type Greeting {
+    x : Int ,
+    y : String  ,
+    z : String
+}
+
+type Mutation{
+    test(id : Int , name : String , email : String) : Test
+    addZone(  nameAr : String , nameEn :String , zoneTypeId : Int , lastUpdateDate : String , creationDate : String):Zone
+}
+
+type Test  {
+    id : Int , name : String , email : String
+}
+
+type Post {
+    id: ID!
+    title: String!
+    content: String!
+}
+
+type Subscription {
+greetings : Greeting
+}
+
+type ProductPriceHistory {
+    x : Int ,
+    y : String  ,
+    z : String
+}

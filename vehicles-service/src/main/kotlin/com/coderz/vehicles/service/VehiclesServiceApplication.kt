@@ -9,6 +9,8 @@ import org.springframework.data.repository.kotlin.CoroutineCrudRepository
 import org.springframework.http.codec.ServerCodecConfigurer
 import org.springframework.stereotype.Repository
 import org.springframework.web.reactive.config.WebFluxConfigurer
+import reactor.core.publisher.Flux
+import reactor.core.publisher.Mono
 
 @SpringBootApplication
 class VehiclesServiceApplication
@@ -34,6 +36,7 @@ interface MovementStatusRepository : CoroutineCrudRepository<VehicleMovementStat
 @Repository
 interface  AvlLastDataRepository : CoroutineCrudRepository<AvlLastData , Int>{
     fun findAllBy(pageable: Pageable) : Flow<AvlLastData>
+    fun findByPlateNumber (plateNumber : String) : Flow<AvlLastData>
 }
 @Configuration
 class WebFluxConfiguration : WebFluxConfigurer {
