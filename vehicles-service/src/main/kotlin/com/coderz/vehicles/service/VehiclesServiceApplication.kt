@@ -39,6 +39,11 @@ interface  AvlLastDataRepository : CoroutineCrudRepository<AvlLastData , Int>{
     fun findAllBy(pageable: Pageable) : Flow<AvlLastData>
     fun findByPlateNumber (plateNumber : String) : Flow<AvlLastData>
 }
+
+@Repository
+interface AvlLastUpdatesRepository : CoroutineCrudRepository<AvlData , Int>{
+    fun findByPlateNumber(plateNumber: String ) : Flow<AvlData>
+}
 @Configuration
 class WebFluxConfiguration : WebFluxConfigurer {
     override fun configureHttpMessageCodecs(configurer: ServerCodecConfigurer) {

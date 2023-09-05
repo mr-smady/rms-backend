@@ -10,7 +10,7 @@ class VehiclesController(
     private val vehiclesService: VehiclesService,
     private val vehicleDescriptionService: VehicleDescriptionService,
 
-) {
+    ) {
 
     @GetMapping
     suspend fun vehicles(
@@ -22,7 +22,7 @@ class VehiclesController(
             required = false,
             defaultValue = "100"
         ) size: Int,
-    ) =        vehiclesService.vehicles(page, size )
+    ) = vehiclesService.vehicles(page, size)
 
     @GetMapping("/{id}")
     suspend fun vehicle(@PathVariable id: Int) =
@@ -31,6 +31,7 @@ class VehiclesController(
     @GetMapping("/by-plate-number/{plateNumber}")
     suspend fun vehicleByPlateNumber(@PathVariable plateNumber: String) =
         vehiclesService.vehicleByPlateNumber(plateNumber)
+
     @GetMapping("/vehicle-description/{id}")
     suspend fun findVehicleDescriptionById(@PathVariable id: Int) =
         vehicleDescriptionService.findById(id)
@@ -55,11 +56,17 @@ class VehiclesController(
             defaultValue = "100"
         ) size: Int,
     ) =
-   vehiclesService.findAllAvlLastData(page, size)
+        vehiclesService.findAllAvlLastData(page, size)
+
+    @GetMapping("/vehicle-avl-last-updates")
+    suspend fun vehicleAvlLastUpdates(
+         @RequestParam plateNumber: String
+    ) = vehiclesService.vehicleAvlLastUpdates(plateNumber)
 
     @GetMapping("/vehicle-avl-last-data/{plateNumber}")
-    suspend fun vehicleAvlLastData(@PathVariable plateNumber : String ) =
+    suspend fun vehicleAvlLastData(@PathVariable plateNumber: String) =
         vehiclesService.vehicleAvlLastData(plateNumber)
+
 
     @GetMapping("/count")
     suspend fun vehiclesCount() =

@@ -72,6 +72,9 @@ class VehiclesResolver(
     suspend fun avlLastData(@Argument page: Int?, @Argument size: Int?) =
         vehiclesService.avlLastData(page ?: 0, size ?: 100)
 
+    @QueryMapping
+    suspend fun vehicleAvlLastUpdates(@Argument plateNumber : String ) =
+        vehiclesService.vehicleAvlLastUpdates(plateNumber)
     @QueryMapping()
     suspend fun vehicleAvlLastData(@Argument plateNumber: String) =
         vehiclesService.vehicleAvlLastData(plateNumber)

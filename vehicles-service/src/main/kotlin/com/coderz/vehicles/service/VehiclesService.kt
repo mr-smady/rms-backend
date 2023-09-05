@@ -13,7 +13,8 @@ class VehiclesService(
     private val vehiclesRepository: VehiclesRepository,
     private val wasteTypeRepository: WasteTypeRepository,
     private val movementStatusRepository: MovementStatusRepository,
-    private  val avlLastDataRepository : AvlLastDataRepository
+    private  val avlLastDataRepository : AvlLastDataRepository ,
+    private val avlLastUpdatesRepository: AvlLastUpdatesRepository
 ) {
     suspend fun vehicles(page: Int, size: Int): Flow<Vehicle> =
         vehiclesRepository.findAllBy(PageRequest.of(page, size))
@@ -37,4 +38,8 @@ class VehiclesService(
 
     suspend fun vehicleByPlateNumber(plateNumber: String)
     = vehiclesRepository.findByPlateNumber(plateNumber).toList().firstOrNull()
+
+   suspend fun vehicleAvlLastUpdates( plateNumber: String) =
+       avlLastUpdatesRepository.findByPlateNumber(plateNumber)
+           .toList().sortedBy{it.movementTime}.takeLast(5)
 }

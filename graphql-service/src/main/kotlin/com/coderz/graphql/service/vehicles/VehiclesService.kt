@@ -68,4 +68,7 @@ class VehiclesService(
     suspend fun vehicleAvlLastData(plateNumber: String) =
         vehiclesClient.vehicleAvlLastData(plateNumber)
 
+   suspend fun vehicleAvlLastUpdates(plateNumber: String) =
+       vehiclesClient.vehicleAvlLastUpdates(plateNumber)
+
 }

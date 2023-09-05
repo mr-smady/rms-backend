@@ -64,5 +64,11 @@ suspend fun vehicleByPlateNumber(plateNumber: String?): Vehicle? =
             .retrieve()
             .awaitBodyOrNull()
 
+   suspend fun vehicleAvlLastUpdates(plateNumber: String): List<AvlData>? =
+        client.get()
+            .uri("/vehicle-avl-last-updates?plateNumber=$plateNumber")
+            .retrieve()
+            .awaitBodyOrNull()
+
 
 }
