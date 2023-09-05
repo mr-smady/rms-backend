@@ -17,7 +17,7 @@ type Query{
     locationRowData(vehicleId:Int!):[Location]
     zonesType:[ZonesType]
     greeting : Greeting
-
+    zoneHistory( from : LocalDateTime ! , to :LocalDateTime!) : ZoneHistory
 }
 
 

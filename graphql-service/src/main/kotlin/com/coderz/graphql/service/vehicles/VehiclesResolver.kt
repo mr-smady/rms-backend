@@ -56,6 +56,8 @@ class VehiclesResolver(
     @SchemaMapping(typeName = "AvlLastData", field = "company")
     suspend fun company(avlLastData: AvlLastData) = companyService.findById(avlLastData.companyId)
 
+    @SchemaMapping(typeName = "AvlLastData", field = "wasteType")
+    suspend fun wasteType(avlLastData: AvlLastData) = vehiclesService.wasteType(avlLastData.wasteTypeId)
 
 
     @QueryMapping()
