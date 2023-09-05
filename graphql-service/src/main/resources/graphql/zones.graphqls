@@ -24,7 +24,3 @@ type ZonesType {
     zonesCount:Int,
 }
 
-type ZoneHistory{
-    vehicles : [Vehicle] ,
-    zone : Zone,
-}
