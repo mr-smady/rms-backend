@@ -35,5 +35,6 @@ class VehiclesService(
     suspend fun vehicleAvlLastData(plateNumber: String)
     = avlLastDataRepository.findByPlateNumber(plateNumber).toList().firstOrNull()
 
-
+    suspend fun vehicleByPlateNumber(plateNumber: String)
+    = vehiclesRepository.findByPlateNumber(plateNumber).toList().firstOrNull()
 }

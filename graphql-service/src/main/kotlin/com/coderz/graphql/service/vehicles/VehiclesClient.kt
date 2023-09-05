@@ -34,7 +34,11 @@ class VehiclesClient(
             .uri("/$id")
             .retrieve()
             .awaitBodyOrNull()
-
+suspend fun vehicleByPlateNumber(plateNumber: String?): Vehicle? =
+    client.get()
+        .uri("/by-plate-number/$plateNumber")
+        .retrieve()
+        .awaitBodyOrNull()
 
     suspend fun vehicleDescription(id: Int): VehicleDescription? =
         client.get()
@@ -59,4 +63,6 @@ class VehiclesClient(
             .uri("/movement-status/${movementStatusId}")
             .retrieve()
             .awaitBodyOrNull()
+
+
 }

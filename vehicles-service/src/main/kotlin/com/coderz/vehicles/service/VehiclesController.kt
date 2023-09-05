@@ -28,6 +28,9 @@ class VehiclesController(
     suspend fun vehicle(@PathVariable id: Int) =
         vehiclesService.vehicle(id)
 
+    @GetMapping("/by-plate-number/{plateNumber}")
+    suspend fun vehicleByPlateNumber(@PathVariable plateNumber: String) =
+        vehiclesService.vehicleByPlateNumber(plateNumber)
     @GetMapping("/vehicle-description/{id}")
     suspend fun findVehicleDescriptionById(@PathVariable id: Int) =
         vehicleDescriptionService.findById(id)

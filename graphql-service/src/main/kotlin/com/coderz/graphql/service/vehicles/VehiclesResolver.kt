@@ -1,11 +1,15 @@
 package com.coderz.graphql.service.vehicles
 
 import com.coderz.graphql.service.alarms.AlarmsService
+import com.coderz.graphql.service.companies.CompaniesService
+import com.coderz.graphql.service.companies.Company
 import com.coderz.graphql.service.manifest.ManifestService
+import kotlinx.coroutines.runBlocking
 import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.graphql.data.method.annotation.SchemaMapping
 import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.GetMapping
 
 //private val log = KotlinLogging.logger {}
 
@@ -15,6 +19,7 @@ class VehiclesResolver(
     private val vehicleDescriptionService: VehicleDescriptionService,
     private val alarmsService: AlarmsService,
     private val manifestService: ManifestService,
+    private val companyService: CompaniesService
 ) {
 
     @QueryMapping
@@ -48,15 +53,24 @@ class VehiclesResolver(
     suspend fun manifests(vehicle: Vehicle) =
         manifestService.vehicleManifests(vehicle.id)
 
-  /*  @SchemaMapping(typeName = "Vehicle" , field = "avlLastData")
-    suspend fun vehiclesLastUpdate(@Argument page: Int?, @Argument size: Int?){
-        vehicleLastDataService.vehiclesLastUpdate(page ?: 0, size ?: 100)
-    }*/
-    @QueryMapping()
-    suspend fun avlLastData(@Argument page: Int?, @Argument size: Int?) =
-      vehiclesService.avlLastData(page ?: 0, size ?: 100)
+    @SchemaMapping(typeName = "AvlLastData", field = "company")
+    suspend fun company(avlLastData: AvlLastData) = companyService.findById(avlLastData.companyId)
+
+
 
     @QueryMapping()
-    suspend fun vehicleAvlLastData(@Argument plateNumber : String) =
+    suspend fun vehicleByPlateNumber(@Argument plateNumber: String) =
+        vehiclesService.findByPlateNumber(plateNumber)
+
+    //   @SchemaMapping(typeName = "Vehicle" , field = "vehicleMovementStatus")
+//    suspend fun vehicleMovementStatus(plateNumber: String){
+//       vehiclesService.vehicleMovementStatus(plateNumber)
+//    }
+    @QueryMapping()
+    suspend fun avlLastData(@Argument page: Int?, @Argument size: Int?) =
+        vehiclesService.avlLastData(page ?: 0, size ?: 100)
+
+    @QueryMapping()
+    suspend fun vehicleAvlLastData(@Argument plateNumber: String) =
         vehiclesService.vehicleAvlLastData(plateNumber)
 }

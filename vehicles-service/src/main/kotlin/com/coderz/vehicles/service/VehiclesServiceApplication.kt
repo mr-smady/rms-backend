@@ -22,6 +22,7 @@ fun main(args: Array<String>) {
 @Repository
 interface VehiclesRepository : CoroutineCrudRepository<Vehicle, Int> {
      fun findAllBy(pageable: Pageable) : Flow<Vehicle>
+   fun findByPlateNumber(plateNumber: String): Flow<Vehicle>
 }
 
 @Repository

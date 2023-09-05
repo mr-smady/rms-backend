@@ -17,7 +17,7 @@ class VehiclesService(
     suspend fun vehicles(page: Int, size: Int) =
         vehiclesClient.vehicles(page, size)
 
-    suspend fun avlLastData(page: Int, size: Int) : List<AvlLastData> {
+    suspend fun avlLastData(page: Int, size: Int): List<AvlLastData> {
         return vehiclesClient.avlLastData(page, size)
     }
 
@@ -28,6 +28,7 @@ class VehiclesService(
         return null
     }
 
+    suspend fun findByPlateNumber(plateNumber: String?) = vehiclesClient.vehicleByPlateNumber(plateNumber)
     suspend fun vehicle(id: Int?) =
         if (id == null) null else vehiclesClient.vehicle(id)
 
@@ -64,6 +65,7 @@ class VehiclesService(
         return null
     }
 
-  suspend fun vehicleAvlLastData(plateNumber: String) =
-      vehiclesClient.vehicleAvlLastData(plateNumber)
+    suspend fun vehicleAvlLastData(plateNumber: String) =
+        vehiclesClient.vehicleAvlLastData(plateNumber)
+
 }

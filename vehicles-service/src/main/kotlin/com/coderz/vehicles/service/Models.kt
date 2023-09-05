@@ -32,6 +32,7 @@ data class Vehicle(
     val wasteTypeId: Int?,
     val movementStatusId: Int?,
     val alarmsCount :Int?,
+    val companyId : Int?
 )
 
 data class VehicleDescription(
@@ -83,5 +84,6 @@ data class AvlLastData(
     val input4: Float?,
     val input5: Float?,
     val plateNumber: String?,
-    val updateDate: LocalDateTime?
+    val updateDate: LocalDateTime? ,
+    val companyId: Int?
 )

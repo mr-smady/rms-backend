@@ -82,4 +82,5 @@ type AvlLastData{
     input5 : Float ,
     plateNumber : String
     updateDate : LocalDateTime ,
+    company : Company
 }

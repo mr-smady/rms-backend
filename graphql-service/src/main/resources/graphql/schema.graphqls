@@ -1,8 +1,9 @@
 type Query{
     vehicles(page:Int, size:Int):[Vehicle],
     avlLastData(page:Int, size:Int) : [AvlLastData] ,
-    vehicleAvlLastData(plateNumber : String) : AvlLastData  ,
+    vehicleAvlLastData(plateNumber : String!) : AvlLastData  ,
     vehicle(id:Int!):Vehicle,
+    vehicleByPlateNumber(plateNumber : String) : Vehicle,
     vehiclesCount:Long,
     alarms:[Alarm],
     companies:[Company],
@@ -16,6 +17,7 @@ type Query{
     locationRowData(vehicleId:Int!):[Location]
     zonesType:[ZonesType]
     greeting : Greeting
+
 }
 
 
