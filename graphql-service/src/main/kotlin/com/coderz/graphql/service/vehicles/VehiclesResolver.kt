@@ -53,21 +53,18 @@ class VehiclesResolver(
     suspend fun manifests(vehicle: Vehicle) =
         manifestService.vehicleManifests(vehicle.id)
 
-    @SchemaMapping(typeName = "AvlLastData", field = "company")
-    suspend fun company(avlLastData: AvlLastData) = companyService.findById(avlLastData.companyId)
+    @SchemaMapping(typeName = "Vehicle", field = "company")
+    suspend fun company(vehicle: Vehicle) = companyService.findById(vehicle.companyId)
 
-    @SchemaMapping(typeName = "AvlLastData", field = "wasteType")
-    suspend fun wasteType(avlLastData: AvlLastData) = vehiclesService.wasteType(avlLastData.wasteTypeId)
+
+    @SchemaMapping(typeName = "AvlLastData", field = "vehicle")
+    suspend fun vehicle(avlLastData: AvlLastData) =  vehiclesService.findByPlateNumber(avlLastData.plateNumber)
 
 
     @QueryMapping()
     suspend fun vehicleByPlateNumber(@Argument plateNumber: String) =
         vehiclesService.findByPlateNumber(plateNumber)
 
-    //   @SchemaMapping(typeName = "Vehicle" , field = "vehicleMovementStatus")
-//    suspend fun vehicleMovementStatus(plateNumber: String){
-//       vehiclesService.vehicleMovementStatus(plateNumber)
-//    }
     @QueryMapping()
     suspend fun avlLastData(@Argument page: Int?, @Argument size: Int?) =
         vehiclesService.avlLastData(page ?: 0, size ?: 100)

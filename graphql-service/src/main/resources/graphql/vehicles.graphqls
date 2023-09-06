@@ -47,6 +47,7 @@ type Vehicle{
     movementStatus: MovementStatus,
     manifests: [Manifest],
     alarmsCount: Int,
+    company : Company
 }
 
 type AvlLastData{
@@ -82,8 +83,7 @@ type AvlLastData{
     input5 : Float ,
     plateNumber : String
     updateDate : LocalDateTime ,
-    company : Company,
-    wasteType:WasteType,
+    vehicle : Vehicle
 }
 
 

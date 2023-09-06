@@ -42,7 +42,7 @@ interface  AvlLastDataRepository : CoroutineCrudRepository<AvlLastData , Int>{
 
 @Repository
 interface AvlLastUpdatesRepository : CoroutineCrudRepository<AvlData , Int>{
-    fun findByPlateNumber(plateNumber: String ) : Flow<AvlData>
+    fun findTop5ByPlateNumberOrderByIdDesc(plateNumber: String ) : Flow<AvlData>
 }
 @Configuration
 class WebFluxConfiguration : WebFluxConfigurer {

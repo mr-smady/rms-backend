@@ -40,6 +40,5 @@ class VehiclesService(
     = vehiclesRepository.findByPlateNumber(plateNumber).toList().firstOrNull()
 
    suspend fun vehicleAvlLastUpdates( plateNumber: String) =
-       avlLastUpdatesRepository.findByPlateNumber(plateNumber)
-           .toList().sortedBy{it.movementTime}.takeLast(5)
+       avlLastUpdatesRepository.findTop5ByPlateNumberOrderByIdDesc(plateNumber)
 }

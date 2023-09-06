@@ -1,7 +1,7 @@
 type Query{
     vehicles(page:Int, size:Int):[Vehicle],
     avlLastData(page:Int, size:Int) : [AvlLastData] ,
-    vehicleAvlLastData(plateNumber : String!) : AvlLastData  ,
+    vehicleAvlLastData(plateNumber : String!) : AvlLastData ,
     vehicleAvlLastUpdates(plateNumber : String !) :  [AvlData] ,
     vehicle(id:Int!):Vehicle,
     vehicleByPlateNumber(plateNumber : String) : Vehicle,

@@ -354,6 +354,10 @@ ALTER TABLE master.dbo.vehicle ADD company_id int NULL;
 ALTER TABLE master.dbo.vehicle ADD CONSTRAINT vehicle_FK FOREIGN KEY (company_id) REFERENCES master.dbo.company(id);
 ALTER TABLE master.dbo.avl_last_data ADD company_id int NULL;
 ALTER TABLE master.dbo.avl_last_data ADD waste_type_id int NULL;
+ALTER TABLE master.dbo.alarm ADD vehicle_plate_number varchar(100) NULL;
+ALTER TABLE master.dbo.avl_last_data ADD alarms_count int NULL;
+ALTER TABLE master.dbo.avl_last_data ADD alarms_count int NULL;
+
 
 
 -- CREATE A TRIGGER THAT ADD A NEW ROW IN avl_last_data WHEN INSERT A NEW RECORD IN avl_data
