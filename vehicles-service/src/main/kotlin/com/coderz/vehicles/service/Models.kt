@@ -85,8 +85,7 @@ data class AvlLastData(
     val input5: Float?,
     val plateNumber: String?,
     val updateDate: LocalDateTime? ,
-    val companyId: Int?,
-    val wasteTypeId: Int?
+
 )
 
 data class AvlData(

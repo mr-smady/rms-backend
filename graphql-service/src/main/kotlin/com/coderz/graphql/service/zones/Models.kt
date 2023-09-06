@@ -7,8 +7,8 @@ data class Zone(
     val nameAr: String?,
     val nameEn: String?,
     val zoneTypeId: Int?,
-    val lastUpdateDate: LocalDateTime?,
-    val creationDate: LocalDateTime
+    val lastUpdateDate : LocalDateTime?,
+    val creationDate : LocalDateTime
 
 )
 
@@ -20,12 +20,9 @@ data class ZonePoint(
 )
 
 data class ZonesType(
-    val id: Int,
-    val nameAr: String?,
-    val nameEn: String?,
-    val deleted: Boolean?,
-    val zonesCount: Int? = 0,
-)
-
-
-data class Greeting(val x : Int , val y : String , val z : String)
+    val id: Int ,
+    val nameAr: String ? ,
+    val nameEn: String ? ,
+    val deleted: Boolean ? ,
+    val zonesCount : Int  ? = 0  ,
+   )
